@@ -13,7 +13,7 @@ const http = require('http');
 //const newApp = require('./app');
 const { hostname } = require("os");
 
-const port = process.env.PORT || 3000;
+const PORT = process.env.PORT;
 const server = http.createServer(app);
 
 app.use(bodyParser.urlencoded({extended: true}));
@@ -72,6 +72,6 @@ app.post("/", function(req, res) {
   //  console.log("Server is running on port 3000");
 //})
 
-server.listen(port, () => {
-  console.log('Server is running on port 3000');
+server.listen(PORT, () => {
+  console.log('Server is running on port ' + PORT);
 })
