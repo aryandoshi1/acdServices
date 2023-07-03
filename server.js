@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
-const { STRING } = require("mysql/lib/protocol/constants/types");
 
 require('dotenv').config();
 const fs = require('fs');
