@@ -15,6 +15,9 @@ const { hostname } = require("os");
 const PORT = process.env.PORT;
 const server = http.createServer(app);
 
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+
 app.use(bodyParser.urlencoded({extended: true}));
 
 app.get('/contact', (req, res) => {
@@ -55,22 +58,29 @@ const Note = mongoose.model("Note", notesSchema);
 
 app.get("/", function(req, res) {
     res.sendFile(__dirname + "/contact.html");
-})
+});
 
 app.post("/", function(req, res) {
     let newNote = new Note ({
         name: req.body.name,
         email: req.body.email,
         message: req.body.message
+    });
+
+    newNote.save()
+    .then(() => {
+      res.status(200).json({ message: 'Submit successful!' });
     })
-    newNote.save();
-    res.redirect("/");
-})
+    .catch((error) => {
+      console.error('Failed to save note:', error);
+      res.status(500).json({ message: 'Failed to save note' });
+    });
+});
 
 //app.listen(3000, function() {
-  //  console.log("Server is running on port 3000");
-//})
+    //console.log("Server is running on port 3000");
+//});
 
 server.listen(PORT, () => {
   console.log('Server is running on port ' + PORT);
-})
+});

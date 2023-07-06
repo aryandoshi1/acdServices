@@ -6,6 +6,8 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" type="text/css" href="styles.css" />
 		<script src="https://kit.fontawesome.com/69df3e9e7a.js" crossorigin="anonymous"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+		<script src="client.js"></script>
 	</head>
 	<body class="home">
 			<div id="wrapper">
@@ -28,7 +30,7 @@
 					</nav>
 					<div id="footer">
 						<section>
-							<form method="post" action="/">
+							<form id="myForm" method="post" action="/">
 								<div class="fields">
 									<div class="field">
 										<label for="name">Name</label>
@@ -45,6 +47,7 @@
 								</div>
 								<ul class="actions">
 									<li><input type="submit" value="Send Message" /></li>
+									<p id="submitMessage" style="display: none;">Message sent successfully!</p>
 								</ul>
 							</form>
 						</section>
